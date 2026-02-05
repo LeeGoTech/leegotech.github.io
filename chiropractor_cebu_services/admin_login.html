@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <link href="output.css" rel="stylesheet">
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <main class="flex min-h-screen items-center justify-center px-6 py-16">
+    <section class="w-full max-w-xl rounded-2xl bg-white p-6 shadow-xl shadow-slate-300/60 md:p-8">
+     	<div class="w-full flex justify-center mb-10">
+				<div class="flex items-center gap-3">
+					<div class="grid h-10 w-10 place-items-center rounded-full bg-teal-600 text-white font-semibold">CC</div>
+						<div>
+							<p class="text-sm font-semibold uppercase tracking-widest text-teal-700">Traditional Hilot</p>
+							<p class="text-lg font-bold">Cebu Services</p>
+						</div>
+				</div>
+			</div>
+
+			<p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-700">Admin Login</p>
+			<h1 class="mt-2 text-2xl font-semibold text-slate-900 md:text-3xl">Access the Administrator Page</h1>
+			<p class="mt-2 text-sm text-slate-600">
+				Enter your email and password to login to administrator dashboard.
+			</p>
+
+      <form class="mt-4 grid gap-4">
+        <div>
+          <label class="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-600">Email</label>
+          <input class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm placeholder:text-slate-400 focus:border-teal-500 focus:outline-none" placeholder="e.g. admin@example.com" type="email">
+        </div>
+
+        <div class="relative">
+          <label class="mb-1 block text-xs font-semibold uppercase tracking-widest text-slate-600">Password</label>
+          <input
+            id="password"
+            class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pr-12 text-sm placeholder:text-slate-400 focus:border-teal-500 focus:outline-none"
+            placeholder="••••••••"
+            type="password"
+            required />
+          <button
+            type="button"
+            id="togglePassword"
+            class="absolute inset-y-0 right-3 top-7 flex items-center text-slate-500 hover:text-teal-600 focus:outline-none"
+            aria-label="Toggle password visibility">👁</button>
+        </div>
+        <a href="admin_dashboard.html" class="rounded-xl bg-teal-600 text-center px-4 py-3 text-sm font-semibold text-white shadow cursor-pointer hover:bg-teal-700" type="submit">
+          Login
+        </a>
+      </form>
+
+			<div class="mt-4 rounded-xl border border-dashed border-teal-200 bg-teal-50/60 p-4 text-sm text-teal-700">
+				You will be redirected to a priority number display page once reference number exists in the database.
+			</div>
+    </section>
+  </main>
+
+  <script src="admin_login.js"></script>
+</body>
+</html>
