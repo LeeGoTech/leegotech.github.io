@@ -1,0 +1,51 @@
+// For Bootstrap PurgeCSS
+1. Install in root folder
+`npm install -D postcss postcss-cli @fullhuman/postcss-purgecss`
+
+2. Add `postcss.config.js` to root folder
+`
+// postcss.config.cjs
+const purgecss = require('@fullhuman/postcss-purgecss');
+
+module.exports = {
+  plugins: [
+    purgecss({
+      content: ['./**/*.html'],
+      safelist: [
+        <insert classes here>
+      ]
+    })
+  ]
+};
+`
+
+3. Run PurgeCSS with PostCSS from the root folder
+`npx postcss ./css/core.css -o ./static/css/core.css --config ./postcss.config.js`
+
+NOTE: Command for this repository:
+`npx postcss assets/css/themes/bootstrap/input.css -o assets/css/themes/bootstrap/output.css --config ./postcss.config.js &&
+npx postcss assets/css/fonts/input.css -o assets/css/fonts/output.css --config ./postcss.config.js`
+
+// For Tailwind CSS (CLI)
+1. Install Tailwind CSS
+Install tailwindcss and @tailwindcss/cli via npm.
+`npm install tailwindcss @tailwindcss/cli`
+
+2. Import Tailwind in your CSS
+Import Tailwind in your CSS. Add the code below to your app/assets/stylesheets/tailwind.css CSS file.
+
+`
+/* Disable automatic detection */
+@import "tailwindcss" source(none);
+
+/* Only scan landing page files (paths are relative to this CSS file) */
+@source "../../views/layouts/landing_page.html.erb";
+@source "../../views/landing_page/**/*.html.erb";
+`
+
+3. Start the Tailwind CLI build process
+Run the CLI tool to scan your source files for classes and build your CSS.
+`npx @tailwindcss/cli -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/pages/landing_page.css --watch`
+
+4. Start using Tailwind in your HTML
+Add your compiled CSS file to the and start using Tailwind’s utility classes to style your content.
