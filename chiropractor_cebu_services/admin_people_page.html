@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Admin Booking Page</title>
   <script>
     (() => {
       const savedTheme = localStorage.getItem("theme");
@@ -98,7 +98,7 @@
             <div class="container-xxl d-flex h-100">
               <ul class="menu-inner py-1">
                 <!-- Page -->
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="admin_dashboard.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-home-smile"></i>
                     <div data-i18n="Dashboard">Dashboard</div>
@@ -110,7 +110,7 @@
                     <div data-i18n="Bookings">Bookings</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="admin_people_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-bxs-user"></i>
                     <div data-i18n="People">People</div>
@@ -141,7 +141,7 @@
               </div>
               <ul class="menu-inner py-1 ps overflow-auto" style="margin-left: 0px;">
                 <!-- Page -->
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="admin_dashboard.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-home-smile"></i>
                     <div data-i18n="Dashboard">Dashboard</div>
@@ -153,7 +153,7 @@
                     <div data-i18n="Bookings">Bookings</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="admin_people_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-bxs-user"></i>
                     <div data-i18n="People">People</div>
@@ -168,7 +168,85 @@
 
           <!-- Content -->
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h1>Hello World!</h1>
+            <div class="card">
+              <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">People</h5>
+                <a href="admin_create_person.html" class="btn btn-primary"><i class="icon-base bx bx-bxs-user-plus"></i><span class="d-none d-sm-block ms-2">Create</span></a>
+              </div>
+              <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Date of Birth</th>
+                      <th>Address</th>
+                      <th>Contact #</th>
+                      <th>Appointments Made</th>
+                      <th class="text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-start align-items-center">
+                          <div class="avatar me-3">
+                            <img src="assets/images/1.png" alt="Avatar" class="rounded-circle">
+                          </div>
+                          <div class="d-flex flex-column">
+                            <h6 class="mb-0 text-truncate">Nathan Wagner</h6>
+                            <small class="text-truncate text-body">24 years old</small>
+                          </div>
+                        </div>
+                      </td>
+                      <td>Jan 2, 2025 5:00 PM</td>
+                      <td>Punta, Ormoc City</td>
+                      <td><a href="tel:+639366486958">0936 648 6958</a></td>
+                      <td>7</td>
+                      <td>
+                        <div class="d-flex align-items-center justify-content-center">
+                          <a href="admin_update_person.html" class="btn btn-icon btn-text-secondary rounded-pill">
+                            <i class="icon-base ri ri-edit-line icon-md"></i>
+                          </a>
+                          <a href="admin_show_person.html" class="btn btn-icon btn-text-secondary rounded-pill">
+                            <i class="icon-base ri ri-eye-line icon-md"></i>
+                          </a>
+                          <a href="#" class="btn btn-icon btn-text-secondary rounded-pill">
+                            <i class="icon-base text-danger ri ri-delete-bin-2-line icon-md"></i>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer mt-4 mx-4 mx-md-0 p-0 pe-md-4">
+                <nav aria-label="Page navigation" class="d-flex justify-content-end overflow-auto">
+                  <ul class="pagination flex-nowrap w-auto table-responsive">
+                    <li class="page-item first">
+                      <a class="page-link" href="#"><i class="icon-base bx bx-chevrons-left icon-sm"></i></a>
+                    </li>
+
+                    <li class="page-item prev">
+                      <a class="page-link" href="#"><i class="icon-base bx bx-chevron-left icon-sm"></i></a>
+                    </li>
+
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+
+                    <li class="page-item next">
+                      <a class="page-link" href="#"><i class="icon-base bx bx-chevron-right icon-sm"></i></a>
+                    </li>
+
+                    <li class="page-item last">
+                      <a class="page-link" href="#"><i class="icon-base bx bx-chevrons-right icon-sm"></i></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>
           <!--/ Content -->
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Admin Booking Show Page</title>
   <script>
     (() => {
       const savedTheme = localStorage.getItem("theme");
@@ -98,22 +98,16 @@
             <div class="container-xxl d-flex h-100">
               <ul class="menu-inner py-1">
                 <!-- Page -->
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="admin_dashboard.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-home-smile"></i>
                     <div data-i18n="Dashboard">Dashboard</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="admin_booking_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                     <div data-i18n="Bookings">Bookings</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="admin_people_page.html" class="menu-link">
-                    <i class="menu-icon icon-base bx bx-bxs-user"></i>
-                    <div data-i18n="People">People</div>
                   </a>
                 </li>
               </ul>
@@ -141,22 +135,16 @@
               </div>
               <ul class="menu-inner py-1 ps overflow-auto" style="margin-left: 0px;">
                 <!-- Page -->
-                <li class="menu-item active">
+                <li class="menu-item">
                   <a href="admin_dashboard.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-home-smile"></i>
                     <div data-i18n="Dashboard">Dashboard</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="admin_booking_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                     <div data-i18n="Bookings">Bookings</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="admin_people_page.html" class="menu-link">
-                    <i class="menu-icon icon-base bx bx-bxs-user"></i>
-                    <div data-i18n="People">People</div>
                   </a>
                 </li>
               </ul>
@@ -168,7 +156,87 @@
 
           <!-- Content -->
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h1>Hello World!</h1>
+            <div class="card">
+              <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Appointments</h5>
+                <button class="btn btn-primary">Add</button>
+              </div>
+              <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Priority #</th>
+                      <th>Date and Time</th>
+                      <th>Duration</th>
+                      <th>Reference #</th>
+                      <th>Status</th>
+                      <th class="text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-start align-items-center">
+                          <div class="avatar me-3">
+                            <img src="assets/images/1.png" alt="Avatar" class="rounded-circle">
+                          </div>
+                          <div class="d-flex flex-column">
+                            <h6 class="mb-0 text-truncate">Nathan Wagner</h6>
+                            <small class="text-truncate text-body">24 years old</small>
+                          </div>
+                        </div>
+                      </td>
+                      <td>1</td>
+                      <td>Jan 2, 2025 5:00 PM</td>
+                      <td>45 minutes</td>
+                      <td>HILOT-02931</td>
+                      <td><span class="badge bg-label-warning me-1">Pending</span></td>
+                      <td>
+                        <div class="d-flex align-items-center justify-content-center">
+                          <a href="#" class="btn btn-icon btn-text-secondary rounded-pill">
+                            <i class="icon-base ri ri-eye-line icon-md"></i>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-footer mt-4 p-0 px-4 d-flex justify-content-end">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination">
+                    <li class="page-item first">
+                      <a class="page-link" href="javascript:void(0);"><i class="icon-base bx bx-chevrons-left icon-sm"></i></a>
+                    </li>
+                    <li class="page-item prev">
+                      <a class="page-link" href="javascript:void(0);"><i class="icon-base bx bx-chevron-left icon-sm"></i></a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">2</a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="javascript:void(0);">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">4</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="javascript:void(0);">5</a>
+                    </li>
+                    <li class="page-item next">
+                      <a class="page-link" href="javascript:void(0);"><i class="icon-base bx bx-chevron-right icon-sm"></i></a>
+                    </li>
+                    <li class="page-item last">
+                      <a class="page-link" href="javascript:void(0);"><i class="icon-base bx bx-chevrons-right icon-sm"></i></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
           </div>
           <!--/ Content -->
 

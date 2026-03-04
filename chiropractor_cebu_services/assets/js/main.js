@@ -1,5 +1,5 @@
 /**
- * Admin Dashboard
+ * Main JS
  */
 
 'use strict';
