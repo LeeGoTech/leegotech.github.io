@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Update Person</title>
+    <title>Admin Show Appointment</title>
     <script>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -14,7 +14,8 @@
     </script>
     <link href="assets/css/themes/bootstrap/output.css" rel="stylesheet" />
     <link href="assets/css/fonts/output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/libs/notyf.css">
+    <link rel="stylesheet" href="assets/css/libs/swiper.css">
+    <link href="assets/css/pages/admin_show_appointment.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Layout wrapper -->
@@ -100,13 +101,13 @@
                       <div data-i18n="Dashboard">Dashboard</div>
                     </a>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item active">
                     <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                       <div data-i18n="Appointments">Appointments</div>
                     </a>
                   </li>
-                  <li class="menu-item active">
+                  <li class="menu-item">
                     <a href="admin_people_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-bxs-user"></i>
                       <div data-i18n="People">People</div>
@@ -143,13 +144,13 @@
                       <div data-i18n="Dashboard">Dashboard</div>
                     </a>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item active">
                     <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                       <div data-i18n="Appointments">Appointments</div>
                     </a>
                   </li>
-                  <li class="menu-item active">
+                  <li class="menu-item">
                     <a href="admin_people_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-bxs-user"></i>
                       <div data-i18n="People">People</div>
@@ -164,138 +165,132 @@
 
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
-              <!-- Breadcrumb -->
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-style1">
-                  <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
-                  </li>
-                  <li class="breadcrumb-item">
-                    <a href="#">People</a>
-                  </li>
-                  <li class="breadcrumb-item">
-                    <a href="#">Nathan Wagner</a>
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">Update</li>
-                </ol>
-              </nav>
-
-              <!-- Page Header -->
-              <div class="d-flex justify-content-between align-items-center mb-6">
-                <div>
-                  <h4 class="mb-1">Update Person</h4>
-                  <p class="text-muted mb-0">Update the person's information.</p>
+              <!-- Header -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="card mb-6">
+                    <div class="user-profile-header-banner">
+                      <img src="assets/images/profile-banner.png" alt="Banner image" class="rounded-top" />
+                    </div>
+                    <div class="user-profile-header d-flex flex-column flex-lg-row text-sm-start text-center mb-8">
+                      <div class="flex-shrink-0 mt-1 mx-sm-0 mx-auto">
+                        <img src="assets/images/1.png" alt="user image" class="d-block h-auto ms-0 ms-sm-6 rounded-3 user-profile-img" />
+                      </div>
+                      <div class="flex-grow-1 mt-3 mt-lg-5">
+                        <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-5 flex-md-row flex-column gap-4">
+                          <div class="user-profile-info">
+                            <h4 class="mb-2 mt-lg-7">Nathan Wagner</h4>
+                            <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-4 mt-4">
+                              <li class="list-inline-item"><i class="icon-base bx bx-male-sign me-2 align-top"></i><span class="fw-medium">Male</span></li>
+                              <li class="list-inline-item"><i class="icon-base bx bx-calendar me-2 align-top"></i><span class="fw-medium"> Joined March 27, 2026</span></li>
+                            </ul>
+                          </div>
+                          <a href="javascript:void(0)" class="btn btn-primary mb-1"> <i class="icon-base bx bx-user-check icon-sm"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <a href="admin_people_page.html" class="btn btn-label-secondary">
-                  <i class="icon-base ri ri-arrow-left-line me-2"></i>
-                  Back to People
-                </a>
               </div>
+              <!--/ Header -->
 
-              <!-- FORM -->
-              <form id="userForm" novalidate>
-                <div class="row">
-                  <div class="col-xl-8 col-lg-7 mb-0">
+              <!-- User Profile Content -->
+              <div class="row">
+                <div class="col-xl-4 col-lg-5 col-md-5">
+                  <!-- About User -->
+                  <div class="card mb-6">
+                    <div class="card-body">
+                      <small class="card-text text-uppercase text-body-secondary small">About</small>
+                      <ul class="list-unstyled my-3 py-1">
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base bx bx-user"></i><span class="fw-medium mx-2">Full Name:</span>
+                          <span>Nathan Wagner</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base bx bx-check"></i><span class="fw-medium mx-2">Status:</span>
+                          <span>Active</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base bx bx-calendar"></i><span class="fw-medium mx-2">Date of Birth:</span>
+                          <span>January 1, 1970</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base bx bx-crown"></i><span class="fw-medium mx-2">Age:</span>
+                          <span>56 years old</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-2">
+                          <i class="icon-base bx bx-detail"></i><span class="fw-medium mx-2">Address:</span>
+                          <span>Punta, Ormoc City 6541</span>
+                        </li>
+                      </ul>
+                      <small class="card-text text-uppercase text-body-secondary small">Contacts</small>
+                      <ul class="list-unstyled my-3 py-1">
+                        <li class="d-flex align-items-center">
+                          <i class="icon-base bx bx-phone"></i><span class="fw-medium mx-2">Phone Number:</span>
+                          <span><a href="tel:+639366486958">(+63) 936 648 6958</a></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!--/ About User -->
+                  <!-- Profile Overview -->
+                  <div class="card mb-6">
+                    <div class="card-body">
+                      <small class="card-text text-uppercase text-body-secondary small">Overview</small>
+                      <ul class="list-unstyled mb-0 mt-3 pt-1">
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base text-info bx bx-check"></i><span class="fw-medium mx-2">Appointments Made:</span>
+                          <span>13,574</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!--/ Profile Overview -->
+                </div>
+                <div class="col-xl-8 col-lg-7 col-md-7">
 
-                    <div class="card mb-6">
-                      <div class="card-header">
-                        <h5 class="card-title mb-0">Personal Information</h5>
-                      </div>
-
-                      <div class="card-body">
-                        <div class="row g-6">
-
-                          <!-- First Name -->
-                          <div class="col-md-6">
-                            <label for="firstName" class="form-label">First Name *</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Ederlindo" value="Nathan" required>
-                            <div class="invalid-feedback">First name is required.</div>
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-3 pb-1">
+                      <h5 class="card-title mb-0">Appointment #1</h5>
+                    </div>
+                    <div class="card-body">
+                      <ul class="list-unstyled my-3 py-1">
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base bx bx-check"></i><span class="fw-medium mx-2">Status:</span>
+                          <span class="badge bg-label-success me-1">Completed</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base bx bx-calendar"></i><span class="fw-medium mx-2">Date and Time:</span>
+                          <span>January 2, 2025 5:00 PM</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-4">
+                          <i class="icon-base bx bx-clock"></i><span class="fw-medium mx-2">Duration:</span>
+                          <span>45 minutes</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-2">
+                          <i class="icon-base bx bx-detail"></i><span class="fw-medium mx-2">Reference #:</span>
+                          <span>HILOT-02931</span>
+                        </li>
+                      </ul>
+                      <span class="fw-medium">Health Concerns:</span><br>
+                      <span>Back pain. Not so good.</span><br><br>
+                      <span class="fw-medium">Images:</span>
+                      <div class="col-md-6">
+                        <div class="swiper" id="swiper-with-arrows">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide image-slide"><img src="assets/images/health_certificate.jpg" class="appointment-image"></div>
+                            <div class="swiper-slide image-slide"><img src="assets/images/xray-scan.jpeg" class="appointment-image"></div>
                           </div>
-
-                          <!-- Last Name -->
-                          <div class="col-md-6">
-                            <label for="lastName" class="form-label">Last Name *</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="Cojuangco" value="Wagner" required>
-                            <div class="invalid-feedback">Last name is required.</div>
-                          </div>
-
-                          <!-- Gender -->
-                          <div class="col-md-6">
-                            <label for="gender" class="form-label">Gender *</label>
-                            <select id="gender" class="form-select" required>
-                              <option value="">-----</option>
-                              <option value="Male" selected>Male</option>
-                              <option value="Female">Female</option>
-                            </select>
-                            <div class="invalid-feedback">Please select a gender.</div>
-                          </div>
-
-                          <!-- Date of Birth -->
-                          <div class="col-md-6">
-                            <label for="dateOfBirth" class="form-label">Date of Birth *</label>
-                            <input class="form-control" id="dateOfBirth" type="date" value="1970-01-01" required>
-                            <div class="invalid-feedback">Date of birth is required.</div>
-                          </div>
-
-                          <!-- Phone -->
-                          <div class="col-md-6">
-                            <label for="phoneNumber" class="form-label">Phone Number *</label>
-                            <div class="input-group">
-                              <span class="input-group-text">+63</span>
-                              <input type="text" id="phoneNumber" class="form-control" maxlength="10" value="9366486958" required>
-                            </div>
-                            <div class="invalid-feedback">Enter a valid 10-digit phone number.</div>
-                            <div class="form-text">Enter 10-digit number without +63</div>
-                          </div>
-
-                          <!-- Address -->
-                          <div class="col-md-6">
-                            <label for="address" class="form-label">Address *</label>
-                            <input class="form-control" id="address" type="text" value="Punta, Ormoc City 6541" required>
-                            <div class="invalid-feedback">Address is required.</div>
-                          </div>
-
+                          <div class="swiper-button-next swiper-button-white custom-icon"></div>
+                          <div class="swiper-button-prev swiper-button-white custom-icon"></div>
                         </div>
                       </div>
                     </div>
-
                   </div>
 
-                  <!-- Avatar -->
-                  <div class="col-xl-4 col-lg-5 mb-6">
-                    <div class="card">
-                      <div class="card-header">
-                        <h5 class="card-title mb-0">Profile Picture</h5>
-                      </div>
-
-                      <div class="card-body">
-                        <div class="d-flex align-items-center flex-column">
-
-                          <img id="avatarPreview" src="assets/images/1.png" class="rounded-circle mb-4" width="120" height="120">
-
-                          <div class="w-100">
-                            <input type="file" id="avatar" class="form-control" accept=".jpg,.jpeg,.png">
-                            <div class="invalid-feedback">Image must be less than 2MB.</div>
-                            <div class="form-text">Allowed JPG, GIF or PNG. Max size 2MB</div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-
-                <!-- Submit -->
-                <div class="row">
-                  <div class="col-12">
-                    <div class="card">
-                      <div class="card-body d-flex justify-content-end gap-3">
-                        <button class="btn btn-primary"><i class="icon-base ri ri-edit-line me-2"></i>Update</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
+              </div>
+              <!--/ User Profile Content -->
             </div>
             <!--/ Content -->
 
@@ -314,9 +309,21 @@
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
 
-    <script src="assets/js/libs/notyf.js"></script>
+    <!-- Bootstrap Modal for Previewing Images -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-transparent border-0">
+          <div class="modal-body text-center p-0">
+            <img id="previewImage" class="img-fluid rounded">
+          </div>
+          <button class="btn-close position-absolute top-0 end-0 m-3"></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/libs/swiper.js"></script>
     <script src="assets/js/theme-toggler.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/pages/admin_update_person.js"></script>
+    <script src="assets/js/pages/admin_show_appointment.js"></script>
   </body>
 </html>

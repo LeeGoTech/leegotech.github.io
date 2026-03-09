@@ -4,6 +4,89 @@
 
 'use strict';
 
+/**
+* Generic modal helper (Bootstrap-style, no Bootstrap JS plugin)
+*/
+function makeModalController(modalId, opts = {}) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return null;
+
+  const {
+    openSelector = null,
+    closeSelector = ".btn-close, .btn-label-secondary, [data-modal-close]",
+    onOpen = null
+  } = opts;
+
+  let backdrop = null;
+
+  function createBackdrop() {
+    backdrop = document.createElement("div");
+    backdrop.className = "modal-backdrop fade";
+    document.body.appendChild(backdrop);
+
+    setTimeout(() => backdrop && backdrop.classList.add("show"), 10);
+    backdrop.addEventListener("click", close);
+  }
+
+  function removeBackdrop() {
+    if (!backdrop) return;
+    backdrop.classList.remove("show");
+    setTimeout(() => {
+      if (backdrop) {
+        backdrop.remove();
+        backdrop = null;
+      }
+    }, 150);
+  }
+
+  function open(triggerEl = null) {
+    if (typeof onOpen === "function") onOpen(triggerEl);
+
+    modal.style.display = "block";
+    modal.removeAttribute("aria-hidden");
+    document.body.classList.add("modal-open");
+
+    createBackdrop();
+    setTimeout(() => modal.classList.add("show"), 10);
+  }
+
+  function close() {
+    if (document.activeElement && modal.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+
+    modal.classList.remove("show");
+
+    setTimeout(() => {
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+    }, 150);
+
+    document.body.classList.remove("modal-open");
+    removeBackdrop();
+  }
+
+  modal.querySelectorAll(closeSelector).forEach((btn) => {
+    btn.addEventListener("click", close);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.classList.contains("show")) close();
+  });
+
+  if (openSelector) {
+    document.querySelectorAll(openSelector).forEach((el) => {
+      el.addEventListener("click", function (e) {
+        if (el.tagName.toLowerCase() === "a") e.preventDefault();
+        open(el);
+      });
+    });
+  }
+
+  return { open, close, modal };
+}
+window.makeModalController = makeModalController;
+
 document.addEventListener('DOMContentLoaded', function (e) {
   /**
   * Navbar toggler when on mobile/tablet
@@ -21,88 +104,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
       e.preventDefault();
       document.documentElement.classList.remove("layout-menu-expanded");
     });
-  }
-
-  /**
-  * Generic modal helper (Bootstrap-style, no Bootstrap JS plugin)
-  */
-  function makeModalController(modalId, opts = {}) {
-    const modal = document.getElementById(modalId);
-    if (!modal) return null;
-
-    const {
-      openSelector = null,
-      closeSelector = ".btn-close, .btn-label-secondary, [data-modal-close]",
-      onOpen = null
-    } = opts;
-
-    let backdrop = null;
-
-    function createBackdrop() {
-      backdrop = document.createElement("div");
-      backdrop.className = "modal-backdrop fade";
-      document.body.appendChild(backdrop);
-
-      setTimeout(() => backdrop && backdrop.classList.add("show"), 10);
-      backdrop.addEventListener("click", close);
-    }
-
-    function removeBackdrop() {
-      if (!backdrop) return;
-      backdrop.classList.remove("show");
-      setTimeout(() => {
-        if (backdrop) {
-          backdrop.remove();
-          backdrop = null;
-        }
-      }, 150);
-    }
-
-    function open(triggerEl = null) {
-      if (typeof onOpen === "function") onOpen(triggerEl);
-
-      modal.style.display = "block";
-      modal.removeAttribute("aria-hidden");
-      document.body.classList.add("modal-open");
-
-      createBackdrop();
-      setTimeout(() => modal.classList.add("show"), 10);
-    }
-
-    function close() {
-      if (document.activeElement && modal.contains(document.activeElement)) {
-        document.activeElement.blur();
-      }
-
-      modal.classList.remove("show");
-
-      setTimeout(() => {
-        modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true");
-      }, 150);
-
-      document.body.classList.remove("modal-open");
-      removeBackdrop();
-    }
-
-    modal.querySelectorAll(closeSelector).forEach((btn) => {
-      btn.addEventListener("click", close);
-    });
-
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("show")) close();
-    });
-
-    if (openSelector) {
-      document.querySelectorAll(openSelector).forEach((el) => {
-        el.addEventListener("click", function (e) {
-          if (el.tagName.toLowerCase() === "a") e.preventDefault();
-          open(el);
-        });
-      });
-    }
-
-    return { open, close, modal };
   }
 
   // makeModalController("basicModal", {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Update Person</title>
+    <title>Admin Update Appointment</title>
     <script>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -14,6 +14,7 @@
     </script>
     <link href="assets/css/themes/bootstrap/output.css" rel="stylesheet" />
     <link href="assets/css/fonts/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/libs/dropzone.css">
     <link rel="stylesheet" href="assets/css/libs/notyf.css">
   </head>
   <body>
@@ -100,13 +101,13 @@
                       <div data-i18n="Dashboard">Dashboard</div>
                     </a>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item active">
                     <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                       <div data-i18n="Appointments">Appointments</div>
                     </a>
                   </li>
-                  <li class="menu-item active">
+                  <li class="menu-item">
                     <a href="admin_people_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-bxs-user"></i>
                       <div data-i18n="People">People</div>
@@ -143,13 +144,13 @@
                       <div data-i18n="Dashboard">Dashboard</div>
                     </a>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item active">
                     <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                       <div data-i18n="Appointments">Appointments</div>
                     </a>
                   </li>
-                  <li class="menu-item active">
+                  <li class="menu-item">
                     <a href="admin_people_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-bxs-user"></i>
                       <div data-i18n="People">People</div>
@@ -171,10 +172,7 @@
                     <a href="#">Dashboard</a>
                   </li>
                   <li class="breadcrumb-item">
-                    <a href="#">People</a>
-                  </li>
-                  <li class="breadcrumb-item">
-                    <a href="#">Nathan Wagner</a>
+                    <a href="#">Appointments</a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">Update</li>
                 </ol>
@@ -183,19 +181,19 @@
               <!-- Page Header -->
               <div class="d-flex justify-content-between align-items-center mb-6">
                 <div>
-                  <h4 class="mb-1">Update Person</h4>
-                  <p class="text-muted mb-0">Update the person's information.</p>
+                  <h4 class="mb-1">Update Appointment</h4>
+                  <p class="text-muted mb-0">Update an appointment.</p>
                 </div>
-                <a href="admin_people_page.html" class="btn btn-label-secondary">
+                <a href="admin_appointment_page.html" class="btn btn-label-secondary">
                   <i class="icon-base ri ri-arrow-left-line me-2"></i>
-                  Back to People
+                  Back to Appointments
                 </a>
               </div>
 
               <!-- FORM -->
-              <form id="userForm" novalidate>
+              <form id="appointmentForm" novalidate>
                 <div class="row">
-                  <div class="col-xl-8 col-lg-7 mb-0">
+                  <div class="col mb-0">
 
                     <div class="card mb-6">
                       <div class="card-header">
@@ -205,83 +203,68 @@
                       <div class="card-body">
                         <div class="row g-6">
 
-                          <!-- First Name -->
+                          <!-- Full Name -->
                           <div class="col-md-6">
-                            <label for="firstName" class="form-label">First Name *</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Ederlindo" value="Nathan" required>
-                            <div class="invalid-feedback">First name is required.</div>
-                          </div>
-
-                          <!-- Last Name -->
-                          <div class="col-md-6">
-                            <label for="lastName" class="form-label">Last Name *</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="Cojuangco" value="Wagner" required>
-                            <div class="invalid-feedback">Last name is required.</div>
-                          </div>
-
-                          <!-- Gender -->
-                          <div class="col-md-6">
-                            <label for="gender" class="form-label">Gender *</label>
-                            <select id="gender" class="form-select" required>
-                              <option value="">-----</option>
-                              <option value="Male" selected>Male</option>
-                              <option value="Female">Female</option>
+                            <label for="fullName" class="form-label">Full name *</label>
+                            <select id="fullName" class="form-select">
+                              <option>-----</option>
+                              <option value="1" selected>Ed Cojuangco</option>
+                              <option value="2">Nathan Wagner</option>
                             </select>
-                            <div class="invalid-feedback">Please select a gender.</div>
+                            <div class="invalid-feedback">Full name is required.</div>
                           </div>
 
-                          <!-- Date of Birth -->
+                          <!-- Status -->
                           <div class="col-md-6">
-                            <label for="dateOfBirth" class="form-label">Date of Birth *</label>
-                            <input class="form-control" id="dateOfBirth" type="date" value="1970-01-01" required>
-                            <div class="invalid-feedback">Date of birth is required.</div>
+                            <label for="status" class="form-label">Status *</label>
+                            <select id="status" class="form-select">
+                              <option value="0" selected>Waiting</option>
+                              <option value="1">Cancelled</option>
+                            </select>
+                            <div class="invalid-feedback">Full name is required.</div>
                           </div>
 
-                          <!-- Phone -->
+                          <!-- Date & Time -->
                           <div class="col-md-6">
-                            <label for="phoneNumber" class="form-label">Phone Number *</label>
-                            <div class="input-group">
-                              <span class="input-group-text">+63</span>
-                              <input type="text" id="phoneNumber" class="form-control" maxlength="10" value="9366486958" required>
+                            <label for="dateAndTime" class="form-label">Date & Time</label>
+                            <input id="dateAndTime" class="form-control" type="datetime-local" value="2025-01-02T17:00:00">
+                            <div class="invalid-feedback">Date and time is required or date and time should be beyond present.</div>
+                          </div>
+
+                          <!-- Duration (Minutes) -->
+                          <div class="col-md-6">
+                            <label for="durationInMinutes" class="form-label">Duration (minutes) *</label>
+                            <input id="durationInMinutes" class="form-control" type="number" value="45">
+                            <div class="invalid-feedback">Duration is required.</div>
+                          </div>
+
+                          <!-- Health Concerns -->
+                          <div class="col-12">
+                            <label for="healthConcerns" class="form-label">Health Concerns</label>
+                            <textarea id="healthConcerns" class="form-control" rows="5">Back pain. Not so good.</textarea>
+                          </div>
+
+                          <!-- Images (optional) -->
+                          <div class="col-12">
+                            <label for="images" class="form-label">Images</label>
+                            <div class="dropzone needsclick" id="dropzone-multi">
+                              <div class="dz-message needsclick">
+                                Drop files here or click to upload
+                                <span class="note needsclick"
+                                  >(This is just a demo dropzone. Selected files are
+                                  <span class="fw-medium">not</span> actually uploaded.)</span
+                                >
+                              </div>
+                              <div class="fallback">
+                                <input name="file" type="file" />
+                              </div>
                             </div>
-                            <div class="invalid-feedback">Enter a valid 10-digit phone number.</div>
-                            <div class="form-text">Enter 10-digit number without +63</div>
-                          </div>
-
-                          <!-- Address -->
-                          <div class="col-md-6">
-                            <label for="address" class="form-label">Address *</label>
-                            <input class="form-control" id="address" type="text" value="Punta, Ormoc City 6541" required>
-                            <div class="invalid-feedback">Address is required.</div>
                           </div>
 
                         </div>
                       </div>
                     </div>
 
-                  </div>
-
-                  <!-- Avatar -->
-                  <div class="col-xl-4 col-lg-5 mb-6">
-                    <div class="card">
-                      <div class="card-header">
-                        <h5 class="card-title mb-0">Profile Picture</h5>
-                      </div>
-
-                      <div class="card-body">
-                        <div class="d-flex align-items-center flex-column">
-
-                          <img id="avatarPreview" src="assets/images/1.png" class="rounded-circle mb-4" width="120" height="120">
-
-                          <div class="w-100">
-                            <input type="file" id="avatar" class="form-control" accept=".jpg,.jpeg,.png">
-                            <div class="invalid-feedback">Image must be less than 2MB.</div>
-                            <div class="form-text">Allowed JPG, GIF or PNG. Max size 2MB</div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
@@ -314,9 +297,10 @@
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
 
+    <script src="assets/js/libs/dropzone.js"></script>
     <script src="assets/js/libs/notyf.js"></script>
     <script src="assets/js/theme-toggler.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/pages/admin_update_person.js"></script>
+    <script src="assets/js/pages/admin_update_appointment.js"></script>
   </body>
 </html>

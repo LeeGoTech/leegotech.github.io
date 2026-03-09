@@ -102,9 +102,9 @@
                     </a>
                   </li>
                   <li class="menu-item">
-                    <a href="admin_booking_page.html" class="menu-link">
+                    <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
-                      <div data-i18n="Bookings">Bookings</div>
+                      <div data-i18n="Appointments">Appointments</div>
                     </a>
                   </li>
                   <li class="menu-item active">
@@ -145,9 +145,9 @@
                     </a>
                   </li>
                   <li class="menu-item">
-                    <a href="admin_booking_page.html" class="menu-link">
+                    <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
-                      <div data-i18n="Bookings">Bookings</div>
+                      <div data-i18n="Appointments">Appointments</div>
                     </a>
                   </li>
                   <li class="menu-item active">
@@ -273,9 +273,65 @@
                   <!-- User Appointments Panel -->
                   <div class="tab-pane fade active show" id="user-appointments" role="tabpanel">
                     <div class="card">
-                      <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Appointments</h5>
-                      </div>
+                      <form action="get" method="get" class="card-header">
+                        <!-- Filters and Search Section -->
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+                          <h5 class="card-title mb-0">Appointments</h5>
+                        </div>
+
+                        <!-- Sort Row -->
+                        <div class="d-flex align-items-center justify-content-between gap-2 mt-3 mb-3 flex-wrap">
+                          <span class="text-muted small">Sort by:</span>
+                          <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-sm btn-primary">
+                              <i class="ri ri-filter-line me-1"></i>Apply
+                            </button>
+                            <button type="submit" class="btn btn-sm btn-outline-secondary d-none">
+                              <i class="ri ri-close-line me-1"></i>Clear
+                            </button>
+                          </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center row gx-3 gy-3">
+
+                          <div class="col-md-6">
+                            <select class="form-select text-capitalize" name="sort_by_eq">
+                              <option value="">-----</option>
+                              <option value="0">Priority No.</option>
+                              <option value="3">Date and Time</option>
+                              <option value="4">Duration</option>
+                              <option value="5">Reference No.</option>
+                              <option value="6">Status</option>
+                            </select>
+                          </div>
+
+                          <div class="col-md-6">
+                            <select class="form-select text-capitalize" name="order_eq">
+                              <option value="">-----</option>
+                              <option value="0">Ascending</option>
+                              <option value="1">Descending</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <!-- Filter Row -->
+                        <div class="d-flex align-items-center justify-content-between gap-2 mt-3 mb-3 flex-wrap">
+                          <span class="text-muted small">Filter by:</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center row gx-3 gy-3">
+
+                          <div class="col-12">
+                            <select class="form-select text-capitalize" name="status_eq">
+                              <option value="">Status</option>
+                              <option value="0">Completed</option>
+                              <option value="1">Waiting</option>
+                              <option value="2">Serving</option>
+                              <option value="3">Cancelled</option>
+                            </select>
+                          </div>
+                        </div>
+                      </form>
                       <div class="table-responsive text-nowrap">
                         <table class="table">
                           <thead>
@@ -297,7 +353,7 @@
                               <td><span class="badge bg-label-warning me-1">Pending</span></td>
                               <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                  <a href="#" class="btn btn-icon btn-text-secondary rounded-pill">
+                                  <a href="admin_show_appointment.html" class="btn btn-icon btn-text-secondary rounded-pill">
                                     <i class="icon-base ri ri-eye-line icon-md"></i>
                                   </a>
                                 </div>

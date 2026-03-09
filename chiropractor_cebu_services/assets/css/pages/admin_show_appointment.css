@@ -1,0 +1,106 @@
+/* Help center
+******************************************************************************* */
+.user-profile-header-banner img {
+  block-size: 250px;
+  inline-size: 100%;
+  object-fit: cover;
+}
+
+.user-profile-header {
+  margin-block-start: -2rem;
+}
+.user-profile-header .user-profile-img {
+  border: 5px solid;
+  border-color: var(--paper-bg);
+  inline-size: 120px;
+}
+
+/* Responsive style */
+@media (max-width: 767.98px) {
+  .user-profile-header-banner img {
+    block-size: 150px;
+  }
+  .user-profile-header .user-profile-img {
+    inline-size: 100px;
+  }
+}
+
+/* Carousel
+  ? Swiper page specif style only, refer swiper.scss for swiper component style
+******************************************************************************* */
+.swiper {
+  block-size: 400px;
+  inline-size: 100%;
+}
+.swiper .swiper-slide {
+  background-color: #ecebed;
+  background-position: center;
+  background-size: cover;
+  font-size: 1.5rem;
+  padding-block: 2rem;
+  padding-inline: 0;
+  text-align: center;
+}
+
+/* Multiple slides, 3D cover flow effect */
+#swiper-multiple-slides,
+#swiper-3d-coverflow-effect {
+  block-size: 300px;
+}
+
+#swiper-3d-coverflow-effect .swiper-slide {
+  max-inline-size: 300px;
+}
+
+/* 3D cube effect */
+#swiper-3d-cube-effect {
+  max-inline-size: 400px;
+}
+
+/* 3D flip effect */
+#swiper-3d-flip-effect {
+  padding: 50px;
+}
+
+/* Gallery */
+#swiper-gallery {
+  block-size: 500px;
+}
+#swiper-gallery .gallery-top {
+  block-size: 80%;
+  inline-size: 100%;
+}
+#swiper-gallery .gallery-thumbs {
+  box-sizing: border-box;
+  block-size: 20%;
+  padding-block: 10px;
+  padding-inline: 0;
+}
+#swiper-gallery .gallery-thumbs .swiper-slide {
+  block-size: 100%;
+  cursor: pointer;
+  inline-size: 25%;
+  opacity: 0.4;
+}
+#swiper-gallery .gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.image-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#previewImage {
+  cursor: zoom-in;
+  max-height: 80vh;
+  transition: transform 0.1s ease;
+  user-select: none;
+}
+
+.appointment-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
