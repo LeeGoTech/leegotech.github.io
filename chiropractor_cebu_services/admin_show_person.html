@@ -16,6 +16,7 @@
     <link href="assets/css/fonts/output.css" rel="stylesheet" />
     <link href="assets/css/pages/admin_show_person.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/libs/notyf.css" />
+    <link rel="stylesheet" href="assets/css/libs/flatpickr.css">
   </head>
   <body>
     <!-- Layout wrapper -->
@@ -102,6 +103,12 @@
                     </a>
                   </li>
                   <li class="menu-item">
+                    <a href="admin_calendar_page.html" class="menu-link">
+                      <i class="menu-icon icon-base bx bx-calendar"></i>
+                      <div data-i18n="Calendar">Calendar</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
                     <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                       <div data-i18n="Appointments">Appointments</div>
@@ -145,6 +152,12 @@
                     </a>
                   </li>
                   <li class="menu-item">
+                    <a href="admin_calendar_page.html" class="menu-link">
+                      <i class="menu-icon icon-base bx bx-calendar"></i>
+                      <div data-i18n="Calendar">Calendar</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
                     <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                       <div data-i18n="Appointments">Appointments</div>
@@ -174,7 +187,7 @@
                     </div>
                     <div class="user-profile-header d-flex flex-column flex-lg-row text-sm-start text-center mb-8">
                       <div class="flex-shrink-0 mt-1 mx-sm-0 mx-auto">
-                        <img src="assets/images/1.png" alt="user image" class="d-block h-auto ms-0 ms-sm-6 rounded-3 user-profile-img" />
+                        <img src="assets/images/1.png" alt="user image" class="d-block h-auto ms-0 ms-sm-6 rounded-3 user-profile-img user-image" />
                       </div>
                       <div class="flex-grow-1 mt-3 mt-lg-5">
                         <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-5 flex-md-row flex-column gap-4">
@@ -297,11 +310,11 @@
                           <div class="col-md-6">
                             <select class="form-select text-capitalize" name="sort_by_eq">
                               <option value="">-----</option>
-                              <option value="0">Priority No.</option>
-                              <option value="3">Date and Time</option>
-                              <option value="4">Duration</option>
-                              <option value="5">Reference No.</option>
-                              <option value="6">Status</option>
+                              <option value="1">ID</option>
+                              <option value="2">Priority No.</option>
+                              <option value="3">Date</option>
+                              <option value="4">Reference No.</option>
+                              <option value="5">Status</option>
                             </select>
                           </div>
 
@@ -330,12 +343,22 @@
                               <option value="3">Cancelled</option>
                             </select>
                           </div>
+
+                          <div class="col-12">
+                            <label for="start-to-end-date-filter" class="form-label">Start to End Date</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="YYYY-MM-DD to YYYY-MM-DD"
+                              id="start-to-end-date-filter" />
+                          </div>
                         </div>
                       </form>
                       <div class="table-responsive text-nowrap">
                         <table class="table">
                           <thead>
                             <tr>
+                              <th>ID</th>
                               <th>Priority #</th>
                               <th>Date and Time</th>
                               <th>Duration</th>
@@ -346,6 +369,7 @@
                           </thead>
                           <tbody>
                             <tr>
+                              <td>1</td>
                               <td>1</td>
                               <td>Jan 2, 2025 5:00 PM</td>
                               <td>45 minutes</td>
@@ -414,6 +438,19 @@
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
 
+    <!-- Bootstrap Modal for Previewing Images -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-transparent border-0">
+          <div class="modal-body text-center p-0">
+            <img id="previewImage" class="img-fluid rounded">
+          </div>
+          <button class="btn-close position-absolute top-0 end-0 m-3"></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/libs/flatpickr.js"></script>
     <script src="assets/js/libs/notyf.js"></script>
     <script src="assets/js/theme-toggler.js"></script>
     <script src="assets/js/main.js"></script>

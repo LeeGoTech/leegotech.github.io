@@ -14,6 +14,8 @@
   </script>
   <link href="assets/css/themes/bootstrap/output.css" rel="stylesheet">
   <link href="assets/css/fonts/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/libs/apex-charts.css">
+  <link rel="stylesheet" href="assets/css/libs/notyf.css">
 </head>
 <body>
   <!-- Layout wrapper -->
@@ -105,6 +107,12 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="admin_calendar_page.html" class="menu-link">
+                    <i class="menu-icon icon-base bx bx-calendar"></i>
+                    <div data-i18n="Calendar">Calendar</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="admin_appointment_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                     <div data-i18n="Appointments">Appointments</div>
@@ -148,6 +156,12 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="admin_calendar_page.html" class="menu-link">
+                    <i class="menu-icon icon-base bx bx-calendar"></i>
+                    <div data-i18n="Calendar">Calendar</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="admin_appointment_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                     <div data-i18n="Appointments">Appointments</div>
@@ -167,8 +181,197 @@
           <!-- / Menu -->
 
           <!-- Content -->
-          <div class="container-xxl flex-grow-1 container-p-y">
-            <h1>Hello World!</h1>
+          <div id="dashboardContent" class="container-xxl flex-grow-1 container-p-y">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-6">
+              <div>
+                <h4 class="mb-1">Dashboard Overview</h4>
+                <p class="mb-0 text-body-secondary">Quick snapshot of today's clinic activity for admin and staff.</p>
+              </div>
+              <div class="gap-2">
+                <div class="badge bg-label-primary rounded-pill px-4 py-2">
+                  <span class="h5 text-primary" id="dashboard-current-date">Loading date...</span>
+                  <span class="h5 text-primary" id="dashboard-current-time">Loading time...</span>
+                </div>
+                <button class="d-none ms-3 btn btn-primary" id="exportToPDF"><i class="icon-base bx bx-arrow-to-top me-2"></i>Export to PDF</button>
+              </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+              <div class="col-12 col-sm-6 col-xl">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                      <span class="avatar avatar-md bg-label-primary rounded d-flex align-items-center justify-content-center">
+                        <i class="icon-base bx bx-calendar-check icon-lg"></i>
+                      </span>
+                      <span class="badge bg-label-success rounded-pill">Today</span>
+                    </div>
+                    <small class="text-uppercase text-body-secondary d-block mb-2">Total Appointments Today</small>
+                    <h3 class="mb-1">24</h3>
+                    <p class="mb-0 text-body-secondary small">Booked sessions scheduled for today.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6 col-xl">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                      <span class="avatar avatar-md bg-label-info rounded d-flex align-items-center justify-content-center">
+                        <i class="icon-base bx bx-hash icon-lg"></i>
+                      </span>
+                      <div>
+                        <button
+                          id="completeAppointment"
+                          type="button"
+                          class="btn rounded-pill btn-icon btn-success appointment-action"
+                          data-status="completed"
+                          data-priority="#1"
+                          data-patient="Juan"
+                          data-date="01/01/2025">
+                          <span class="icon-base bx bx-check icon-md"></span>
+                        </button>
+                        <button
+                          id="cancelAppointment"
+                          type="button"
+                          class="btn rounded-pill btn-icon btn-danger appointment-action"
+                          data-status="cancelled"
+                          data-priority="#1"
+                          data-patient="Juan"
+                          data-date="01/01/2025">
+                          <span class="icon-base bx bx-x icon-md"></span>
+                        </button>
+                      </div>
+                    </div>
+                    <small class="text-uppercase text-body-secondary d-block mb-2">Currently Serving Priority</small>
+                    <h3 class="mb-1">#1</h3>
+                    <p class="mb-0 text-body-secondary small">Priority number presently being assisted.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6 col-xl">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                      <span class="avatar avatar-md bg-label-warning rounded d-flex align-items-center justify-content-center">
+                        <i class="icon-base bx bx-user-voice icon-lg"></i>
+                      </span>
+                      <span class="badge bg-label-warning rounded-pill">Waiting</span>
+                    </div>
+                    <small class="text-uppercase text-body-secondary d-block mb-2">Total Pending Patients</small>
+                    <h3 class="mb-1">8</h3>
+                    <p class="mb-0 text-body-secondary small">Patients still queued and awaiting service.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6 col-xl">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                      <span class="avatar avatar-md bg-label-success rounded d-flex align-items-center justify-content-center">
+                        <i class="icon-base bx bx-check-circle icon-lg"></i>
+                      </span>
+                      <span class="badge bg-label-success rounded-pill">Completed</span>
+                    </div>
+                    <small class="text-uppercase text-body-secondary d-block mb-2">Completed Appointments Today</small>
+                    <h3 class="mb-1">16</h3>
+                    <p class="mb-0 text-body-secondary small">Sessions already finished for the day.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6 col-xl">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                      <span class="avatar avatar-md bg-label-danger rounded d-flex align-items-center justify-content-center">
+                        <i class="icon-base bx bx-x icon-lg"></i>
+                      </span>
+                      <span class="badge bg-label-danger rounded-pill">Cancelled</span>
+                    </div>
+                    <small class="text-uppercase text-body-secondary d-block mb-2">Cancelled Appointments Today</small>
+                    <h3 class="mb-1">0</h3>
+                    <p class="mb-0 text-body-secondary small">Sessions cancelled for the day.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="card h-100">
+                  <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                    <div>
+                      <h5 class="card-title mb-1">Appointments Trend</h5>
+                      <p class="mb-0 text-body-secondary">Daily, weekly, and monthly booking movement to spot peak clinic demand.</p>
+                    </div>
+                    <div class="d-flex gap-2 me-5">
+                      <select id="trendRange" class="form-select form-select-sm" style="width:160px">
+                        <option value="7" selected>Last 7 days</option>
+                        <option value="30">Last 30 days</option>
+                        <option value="180">Last 6 months</option>
+                        <option value="365">Last 1 year</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div id="appointmentsTrendChart"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-xxl-4">
+                <div class="card h-100">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                      <h5 class="card-title mb-1">Status Distribution</h5>
+                      <p class="mb-0 text-body-secondary">Current balance of all appointment outcomes.</p>
+                    </div>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="d-flex flex-column flex-sm-row align-items-center gap-4">
+                      <div id="statusDistributionChart" style="width: 180px; height: 180px"></div>
+                      <div id="statusDistributionList" class="flex-grow-1 w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="small">Completed</span>
+                          <span class="small text-body-primary fw-bold">48%</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="small">Serving</span>
+                          <span class="small text-body-primary fw-bold">18%</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="small">Waiting</span>
+                          <span class="small text-body-primary fw-bold">16%</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="small">Cancelled</span>
+                          <span class="small text-body-primary fw-bold">10%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-xxl-8">
+                <div class="card h-100">
+                  <div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                    <div>
+                      <h5 class="card-title mb-1">Patient Demographics</h5>
+                      <p class="mb-0 text-body-secondary">Shows how many patients are there per age.</p>
+                    </div>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div id="patientDemographicsChart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
           </div>
           <!--/ Content -->
 
@@ -179,6 +382,28 @@
 
       <!--/ Layout container -->
     </div>
+  
+  <!-- Modal for Complete and Cancel Appointment -->
+  <div id="appointmentStatusModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Status</h5>
+          <button type="button" class="btn-close" data-modal-close></button>
+        </div>
+
+        <div class="modal-body">
+          <p id="appointmentStatusMessage"></p>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-label-secondary" data-modal-close>Cancel</button>
+          <button class="btn btn-primary" id="confirmStatusBtn">Yes</button>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <!-- Overlay -->
@@ -187,7 +412,11 @@
   <!-- Drag Target Area To SlideIn Menu On Small Screens -->
   <div class="drag-target"></div>
 
+  <script src="assets/js/libs/apexcharts.js"></script>
+  <script src="assets/js/libs/notyf.js"></script>
   <script src="assets/js/theme-toggler.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/charts-color.js"></script>
+  <script src="assets/js/pages/admin_dashboard.js"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@
   <link href="assets/css/themes/bootstrap/output.css" rel="stylesheet">
   <link href="assets/css/fonts/output.css" rel="stylesheet">
   <link href="assets/css/libs/notyf.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/libs/flatpickr.css">
 </head>
 <body>
   <!-- Layout wrapper -->
@@ -106,6 +107,12 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="admin_calendar_page.html" class="menu-link">
+                    <i class="menu-icon icon-base bx bx-calendar"></i>
+                    <div data-i18n="Calendar">Calendar</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="admin_appointment_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                     <div data-i18n="Appointments">Appointments</div>
@@ -149,6 +156,12 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="admin_calendar_page.html" class="menu-link">
+                    <i class="menu-icon icon-base bx bx-calendar"></i>
+                    <div data-i18n="Calendar">Calendar</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="admin_appointment_page.html" class="menu-link">
                     <i class="menu-icon icon-base bx bx-book-bookmark"></i>
                     <div data-i18n="Appointments">Appointments</div>
@@ -174,9 +187,14 @@
                 <!-- Filters and Search Section -->
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
                   <h5 class="card-title mb-0">People</h5>
-                  <a href="admin_create_person.html" class="btn btn-primary btn-sm">
-                    <i class="icon-base bx bx-bxs-user-plus"></i><span class="ms-2">Create</span>
-                  </a>
+                  <div>
+                    <button type="button" id="peopleExportToCSV" class="btn btn-outline-secondary btn-sm me-2">
+                      <i class="icon-base bx bx-arrow-to-top"></i><span class="ms-2 d-none d-sm-block">Export to CSV</span>
+                    </button>
+                    <a href="admin_create_appointment.html" class="btn btn-primary btn-sm">
+                      <i class="icon-base bx bxs-book-add"></i><span class="ms-2 d-none d-sm-block">Create</span>
+                    </a>
+                  </div>
                 </div>
 
                 <!-- Search Bar -->
@@ -319,12 +337,42 @@
     </div>
   </div>
 
+  <!-- Modal for export to CSV -->
+  <div class="modal fade" id="peopleExportCSVModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Export People</h5>
+          <button type="button" class="btn-close" data-modal-close></button>
+        </div>
+        <div class="modal-body">
+          <form id="exportCSVForm">
+            <div class="mb-3">
+              <label for="start-to-end-date-people" class="form-label">Start to End Date</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="YYYY-MM-DD to YYYY-MM-DD"
+                id="start-to-end-date-people" required />
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Export CSV
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Overlay -->
   <div class="layout-overlay layout-menu-toggle"></div>
 
   <!-- Drag Target Area To SlideIn Menu On Small Screens -->
   <div class="drag-target"></div>
 
+  <script src="assets/js/libs/flatpickr.js"></script>
   <script src="assets/js/theme-toggler.js"></script>
   <script src="assets/js/libs/notyf.js"></script>
   <script src="assets/js/main.js"></script>

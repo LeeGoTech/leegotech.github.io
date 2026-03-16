@@ -50,8 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let valid = true;
 
     const fullName = document.getElementById("fullName");
-    const dateAndTime = document.getElementById("dateAndTime");
-    const duration = document.getElementById("durationInMinutes");
+    const date = document.getElementById("date");
     const healthConcerns = document.getElementById("healthConcerns");
 
     // Reset validation
@@ -67,29 +66,21 @@ document.addEventListener('DOMContentLoaded', function () {
       fullName.classList.add("is-valid");
     }
 
-    // Date & Time
-    if (dateAndTime.value === "") {
-      dateAndTime.classList.add("is-invalid");
+    // Date
+    if (date.value === "") {
+      date.classList.add("is-invalid");
       valid = false;
 
     } else {
-      const selectedDate = new Date(dateAndTime.value);
+      const selectedDate = new Date(date.value);
       const now = new Date();
 
       if (selectedDate < now) {
-        dateAndTime.classList.add("is-invalid");
+        date.classList.add("is-invalid");
         valid = false;
       } else {
-        dateAndTime.classList.add("is-valid");
+        date.classList.add("is-valid");
       }
-    }
-
-    // Duration
-    if (duration.value === "" || Number(duration.value) <= 0) {
-      duration.classList.add("is-invalid");
-      valid = false;
-    } else {
-      duration.classList.add("is-valid");
     }
 
     // Health Concerns (optional but mark valid if filled)

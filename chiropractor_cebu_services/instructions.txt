@@ -30,6 +30,9 @@ npx postcss assets/css/fonts/input.css -o assets/css/fonts/output.css --config .
 1. Install Tailwind CSS
 Install tailwindcss and @tailwindcss/cli via npm.
 `npm install tailwindcss @tailwindcss/cli`
+If with Iconify 4, include this.
+`npm i -D @iconify/tailwind4`
+`npm install -D @iconify-json/material-symbols`
 
 2. Import Tailwind in your CSS
 Import Tailwind in your CSS. Add the code below to your app/assets/stylesheets/tailwind.css CSS file.
@@ -45,7 +48,31 @@ Import Tailwind in your CSS. Add the code below to your app/assets/stylesheets/t
 
 3. Start the Tailwind CLI build process
 Run the CLI tool to scan your source files for classes and build your CSS.
-`npx @tailwindcss/cli -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/pages/landing_page.css --watch`
+`npx @tailwindcss/cli -i ./assets/css/themes/tailwind/input.css -o ./assets/css/themes/tailwind/output.css --watch`
 
 4. Start using Tailwind in your HTML
 Add your compiled CSS file to the and start using Tailwind’s utility classes to style your content.
+
+// For Prettier
+1. Install through NPM
+- for Rails: `npm install --save-dev prettier @prettier/plugin-ruby`
+
+2. Use the .prettierrc file.
+`
+{
+  "plugins": [
+    "@prettier/plugin-ruby",
+    "prettier-plugin-tailwindcss"
+  ],
+  "overrides": [
+    {
+      "files": "*.html.erb",
+      "options": { "parser": "html" }
+    }
+  ],
+  "printWidth": 999,
+  "singleQuote": true
+}
+`
+
+3. Use the command `npx prettier * --write`.

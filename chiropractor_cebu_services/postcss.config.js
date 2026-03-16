@@ -6,6 +6,9 @@ module.exports = {
         // Dashboard
         './admin_dashboard.html', 
 
+        // Calendar Page
+        './admin_calendar_page.html',
+
         // Appointments Page
         './admin_appointment_page.html',
         './admin_create_appointment.html',
@@ -17,6 +20,12 @@ module.exports = {
         './admin_create_person.html', 
         './admin_show_person.html', 
         './admin_update_person.html',
+
+        // Dashboard JS
+        './admin_dashboard.js',
+
+        // Calendar JS
+        './admin_calendar_page.js',
 
         // Appointments Page JS
         './assets/js/pages/admin_appointment_page.js',

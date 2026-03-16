@@ -101,6 +101,12 @@
                       <div data-i18n="Dashboard">Dashboard</div>
                     </a>
                   </li>
+                  <li class="menu-item">
+                    <a href="admin_calendar_page.html" class="menu-link">
+                      <i class="menu-icon icon-base bx bx-calendar"></i>
+                      <div data-i18n="Calendar">Calendar</div>
+                    </a>
+                  </li>
                   <li class="menu-item active">
                     <a href="admin_appointment_page.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-book-bookmark"></i>
@@ -142,6 +148,12 @@
                     <a href="admin_dashboard.html" class="menu-link">
                       <i class="menu-icon icon-base bx bx-home-smile"></i>
                       <div data-i18n="Dashboard">Dashboard</div>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a href="admin_calendar_page.html" class="menu-link">
+                      <i class="menu-icon icon-base bx bx-calendar"></i>
+                      <div data-i18n="Calendar">Calendar</div>
                     </a>
                   </li>
                   <li class="menu-item active">
@@ -214,18 +226,11 @@
                             <div class="invalid-feedback">Full name is required.</div>
                           </div>
 
-                          <!-- Date & Time -->
-                          <div class="col-md-6">
-                            <label for="dateAndTime" class="form-label">Date & Time</label>
-                            <input id="dateAndTime" class="form-control" type="datetime-local">
-                            <div class="invalid-feedback">Date and time is required.</div>
-                          </div>
-
-                          <!-- Duration (Minutes) -->
-                          <div class="col-md-6">
-                            <label for="durationInMinutes" class="form-label">Duration (minutes) *</label>
-                            <input id="durationInMinutes" class="form-control" type="number">
-                            <div class="invalid-feedback">Duration is required.</div>
+                          <!-- Date -->
+                          <div class="col-12">
+                            <label for="date" class="form-label">Date *</label>
+                            <input id="date" class="form-control" type="date">
+                            <div class="invalid-feedback">Date is required or date should not be the current date.</div>
                           </div>
 
                           <!-- Health Concerns -->

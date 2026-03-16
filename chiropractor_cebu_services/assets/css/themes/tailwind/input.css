@@ -5,7 +5,7 @@
 @plugin "@iconify/tailwind4";
 
 /* Only scan landing page files (paths are relative to this CSS file) */
-@source "../../../views/layouts/index.html";
-@source "../../../views/layouts/show_priority_number.html";
-@source "../../../views/layouts/status_checker.html";
-@source "../../../views/layouts/admin_login.html";
+@source "../../../../index.html";
+@source "../../../../show_priority_number.html";
+@source "../../../../status_checker.html";
+@source "../../../../admin_login.html";
